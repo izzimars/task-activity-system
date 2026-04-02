@@ -35,21 +35,21 @@ Notes:
 
 ### Run locally (without Docker)
 
-1. Install dependencies:
+3. Install dependencies:
 
 ```bash
 npm install
 ```
 
-2. Configure `.env` for local services and start PostgreSQL/Redis.
+4. Configure `.env` for local services and start PostgreSQL/Redis.
 
-3. Run migrations:
+5. Run migrations:
 
 ```bash
 npm run migrate:up
 ```
 
-4. Start development server:
+6. Start development server:
 
 ```bash
 npm run dev
@@ -58,6 +58,61 @@ npm run dev
 ## API Documentation
 
 OpenAPI specification is available at `swagger.yaml`.
+
+Base URL: `http://localhost:3000/api/v1`
+
+### Auth
+
+**POST /auth/register**
+```json
+// Request Body
+{ "email": "test@gmail.com", "password": "password123" }
+
+// Response 201
+{ "id": "uuid", "email": "test@gmail.com", "token": "jwt_token" }
+```
+
+**POST /auth/login**
+```json
+// Request Body
+{ "email": "test@gmail.com", "password": "password123" }
+
+// Response 200
+{ "id": "uuid", "email": "test@gmail.com", "token": "jwt_token" }
+```
+
+### Tasks
+> All task endpoints require `Authorization: Bearer <token>` header
+
+**POST /tasks**
+```json
+// Request Body
+{ "title": "Fix login bug", "description": "Optional", "status": "todo" }
+
+// Response 201
+{ "id": "uuid", "title": "Fix login bug", "description": "", "status": "todo", "created_by": "uuid", "created_at": "", "updated_at": "" }
+```
+
+**GET /tasks?page=1&limit=10&status=todo**
+```json
+// Response 200
+{
+  "tasks": [...],
+  "total": 10,
+  "page": 1,
+  "limit": 10
+}
+```
+
+**PATCH /tasks/:id**
+```json
+// Request Body
+{ "status": "in_progress" }
+
+// Response 200
+{ "id": "uuid", "title": "Fix login bug", "status": "in_progress", ... }
+```
+
 
 ## WebSocket Usage Example
 
@@ -93,20 +148,7 @@ Authorization behavior:
 - Public task events are sent only to members of the task team.
 - Private task events are sent only to the task creator and assignees.
 
-## Production Considerations
-
-The implementation is scoped to the requirements. In a production system I would add:
-- Authentication & authorization (JWT)
-- Team/workspace management with role-based access control
-- Task privacy and assignee filtering
-- Horizontal WebSocket scaling via Redis Pub/Sub
-- Input validation, rate limiting, and proper error handling
-
 ## Trade-offs and Design Decisions
-
-- SQL over NoSQL: task/team/member relationships and permission checks are relational and transactional, making PostgreSQL a better fit.
-- Redis only for Pub/Sub: PostgreSQL remains source of truth; Redis is used as an event bus for low-latency fan-out without introducing cache invalidation complexity.
-
 
 ## Security
 
@@ -209,60 +251,3 @@ If this system were to go to production, the following additions and changes wou
 - Integration tests for all API endpoints
 - WebSocket connection and broadcast tests
 - Load testing for real-time broadcast performance under concurrent connections
-
-
-## API Documentation
-
-Base URL: `http://localhost:3000`
-
-### Auth
-
-**POST /auth/register**
-```json
-// Request Body
-{ "email": "test@gmail.com", "password": "password123" }
-
-// Response 201
-{ "id": "uuid", "email": "test@gmail.com", "token": "jwt_token" }
-```
-
-**POST /auth/login**
-```json
-// Request Body
-{ "email": "test@gmail.com", "password": "password123" }
-
-// Response 200
-{ "id": "uuid", "email": "test@gmail.com", "token": "jwt_token" }
-```
-
-### Tasks
-> All task endpoints require `Authorization: Bearer <token>` header
-
-**POST /tasks**
-```json
-// Request Body
-{ "title": "Fix login bug", "description": "Optional", "status": "todo" }
-
-// Response 201
-{ "id": "uuid", "title": "Fix login bug", "description": "", "status": "todo", "created_by": "uuid", "created_at": "", "updated_at": "" }
-```
-
-**GET /tasks?page=1&limit=10&status=todo**
-```json
-// Response 200
-{
-  "tasks": [...],
-  "total": 10,
-  "page": 1,
-  "limit": 10
-}
-```
-
-**PATCH /tasks/:id**
-```json
-// Request Body
-{ "status": "in_progress" }
-
-// Response 200
-{ "id": "uuid", "title": "Fix login bug", "status": "in_progress", ... }
-```
