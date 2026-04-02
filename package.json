@@ -1,0 +1,82 @@
+{
+  "name": "realtime-task-management",
+  "version": "1.0.0",
+  "private": true,
+  "main": "dist/index.js",
+  "scripts": {
+    "pretest": "npm run migrate:test:down && npm run migrate:test:up",
+    "test": "NODE_ENV=test TS_NODE_TRANSPILE_ONLY=1 mocha --require ts-node/register --extension ts --exit --timeout 10000 tests/test/index.ts",
+    "test:watch": "NODE_ENV=test TS_NODE_TRANSPILE_ONLY=1 mocha --require ts-node/register --extension ts --watch --exit tests/test/index.ts",
+    "coverage": "nyc report --reporter=lcov --reporter=text --reporter=html",
+    "dev": "ts-node-dev --respawn --transpile-only -r dotenv/config src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "migrate:up": "db-migrate up --migrations-dir migrations",
+    "migrate:down": "db-migrate down --migrations-dir migrations",
+    "migrate:reset": "db-migrate reset",
+    "migrate:test:up": "db-migrate up --env test --config database.json --migrations-dir migrations",
+    "migrate:test:down": "db-migrate down --env test --config database.json --migrations-dir migrations",
+    "migrate:test:reset": "db-migrate reset --env test --config database.json --migrations-dir migrations",
+    "seed": "db-migrate up --config database.json --migrations-dir migrations/seed"
+  },
+  "nyc": {
+    "extends": "@istanbuljs/nyc-config-typescript",
+    "all": true,
+    "include": [
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "src/**/*.test.ts",
+      "src/types/**",
+      "src/migrations/**"
+    ],
+    "reporter": [
+      "lcov",
+      "text",
+      "html",
+      "json"
+    ],
+    "report-dir": "coverage",
+    "temp-dir": ".nyc_output",
+    "extension": [
+      ".ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ]
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "ioredis": "^5.4.1",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.13.1",
+    "ws": "^8.18.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.29.2",
+    "@babel/preset-typescript": "^7.28.5",
+    "@babel/register": "^7.28.6",
+    "@istanbuljs/nyc-config-typescript": "^1.0.2",
+    "@types/bcrypt": "^5.0.2",
+    "@types/chai": "^5.2.3",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.7",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^22.10.1",
+    "@types/pg": "^8.11.10",
+    "@types/ws": "^8.5.13",
+    "chai": "^4.5.0",
+    "chai-http": "^4.4.0",
+    "mocha": "^11.7.5",
+    "nyc": "^18.0.0",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.9.3"
+  }
+}

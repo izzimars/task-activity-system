@@ -1,0 +1,65 @@
+.
+├── index.html
+├── logfile
+├── migrations
+│   ├── seed
+│   │   └── sqls
+│   │       └── 20260402111000-seed-tasks.sql
+│   └── sqls
+│       ├── 20260402110000-create-tasks-down.sql
+│       └── 20260402110000-create-tasks-up.sql
+├── package-lock.json
+├── package.json
+├── plan.md
+├── src
+│   ├── config
+│   │   ├── cors.ts
+│   │   ├── database.ts
+│   │   ├── env
+│   │   │   ├── development.ts
+│   │   │   ├── index.ts
+│   │   │   └── production.ts
+│   │   ├── express.ts
+│   │   └── logger.ts
+│   ├── index.ts
+│   ├── modules
+│   │   └── tasks
+│   │       ├── const.ts
+│   │       ├── controller.ts
+│   │       ├── dto.ts
+│   │       ├── entities.ts
+│   │       ├── queries.ts
+│   │       ├── repositories.ts
+│   │       ├── routes.ts
+│   │       ├── services.ts
+│   │       └── validator.ts
+│   ├── routes
+│   │   ├── index.ts
+│   │   └── v1
+│   │       └── index.ts
+│   ├── shared
+│   │   ├── errors
+│   │   │   └── index.ts
+│   │   ├── middlewares
+│   │   │   ├── auth.middleware.ts
+│   │   │   ├── global-error-catcher.middleware.ts
+│   │   │   ├── request-body-validator.middleware.ts
+│   │   │   ├── request-logger.middleware.ts
+│   │   │   └── response-logger.middleware.ts
+│   │   ├── services
+│   │   │   └── redis
+│   │   │       └── redis.ts
+│   │   ├── types
+│   │   │   └── index.ts
+│   │   └── utils
+│   │       ├── base-entity.ts
+│   │       └── env.ts
+│   └── websocket
+│       └── server.ts
+├── structure.txt
+├── tests
+│   ├── integration
+│   └── unit
+└── tsconfig.json
+
+23 directories, 40 files

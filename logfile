@@ -1,0 +1,179 @@
+2026-04-02 11:10:11.986 WAT [27832] LOG:  starting PostgreSQL 14.18 (Homebrew) on x86_64-apple-darwin23.6.0, compiled by Apple clang version 16.0.0 (clang-1600.0.26.6), 64-bit
+2026-04-02 11:10:11.992 WAT [27832] LOG:  listening on IPv6 address "::1", port 5432
+2026-04-02 11:10:11.992 WAT [27832] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2026-04-02 11:10:11.993 WAT [27832] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2026-04-02 11:10:12.047 WAT [27835] LOG:  database system was interrupted; last known up at 2026-04-01 13:41:19 WAT
+2026-04-02 11:10:13.159 WAT [27835] LOG:  database system was not properly shut down; automatic recovery in progress
+2026-04-02 11:10:13.195 WAT [27835] LOG:  redo starts at 0/7707A838
+2026-04-02 11:10:13.195 WAT [27835] LOG:  invalid record length at 0/7707A920: wanted 24, got 0
+2026-04-02 11:10:13.195 WAT [27835] LOG:  redo done at 0/7707A8E8 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2026-04-02 11:10:13.224 WAT [27832] LOG:  database system is ready to accept connections
+2026-04-02 12:35:12.671 WAT [27850] LOG:  using stale statistics instead of current ones because stats collector is not responding
+2026-04-02 13:14:16.556 WAT [93122] ERROR:  relation "users" does not exist at character 71
+2026-04-02 13:14:16.556 WAT [93122] STATEMENT:  
+	    SELECT id, email, password_hash, created_at, updated_at
+	    FROM users
+	    WHERE email = $1
+	    LIMIT 1
+	  
+2026-04-02 13:19:25.748 WAT [94491] ERROR:  relation "users" does not exist at character 71
+2026-04-02 13:19:25.748 WAT [94491] STATEMENT:  
+	    SELECT id, email, password_hash, created_at, updated_at
+	    FROM users
+	    WHERE email = $1
+	    LIMIT 1
+	  
+2026-04-02 14:13:21.266 WAT [8651] ERROR:  invalid input syntax for type uuid: "Authentication Token"
+2026-04-02 14:13:21.266 WAT [8651] CONTEXT:  unnamed portal parameter $4 = '...'
+2026-04-02 14:13:21.266 WAT [8651] STATEMENT:  
+	    INSERT INTO tasks (title, description, status, created_by)
+	    VALUES ($1, $2, $3, $4)
+	    RETURNING id, title, description, status, created_by, created_at, updated_at
+	  
+2026-04-02 14:17:43.479 WAT [9297] ERROR:  invalid input syntax for type uuid: "Authentication Token"
+2026-04-02 14:17:43.479 WAT [9297] CONTEXT:  unnamed portal parameter $4 = '...'
+2026-04-02 14:17:43.479 WAT [9297] STATEMENT:  
+	    INSERT INTO tasks (title, description, status, created_by)
+	    VALUES ($1, $2, $3, $4)
+	    RETURNING id, title, description, status, created_by, created_at, updated_at
+	  
+2026-04-02 14:18:45.540 WAT [9484] ERROR:  invalid input syntax for type uuid: "Authentication Token"
+2026-04-02 14:18:45.540 WAT [9484] CONTEXT:  unnamed portal parameter $4 = '...'
+2026-04-02 14:18:45.540 WAT [9484] STATEMENT:  
+	    INSERT INTO tasks (title, description, status, created_by)
+	    VALUES ($1, $2, $3, $4)
+	    RETURNING id, title, description, status, created_by, created_at, updated_at
+	  
+2026-04-02 14:19:41.662 WAT [9608] ERROR:  invalid input syntax for type uuid: "Authentication Token"
+2026-04-02 14:19:41.662 WAT [9608] CONTEXT:  unnamed portal parameter $4 = '...'
+2026-04-02 14:19:41.662 WAT [9608] STATEMENT:  
+	    INSERT INTO tasks (title, description, status, created_by)
+	    VALUES ($1, $2, $3, $4)
+	    RETURNING id, title, description, status, created_by, created_at, updated_at
+	  
+2026-04-02 16:05:24.109 WAT [32591] ERROR:  relation "users" does not exist at character 71
+2026-04-02 16:05:24.109 WAT [32591] STATEMENT:  
+	    SELECT id, email, password_hash, created_at, updated_at
+	    FROM users
+	    WHERE email = $1
+	    LIMIT 1
+	  
+2026-04-02 16:05:24.255 WAT [32602] ERROR:  relation "users" does not exist at character 71
+2026-04-02 16:05:24.255 WAT [32602] STATEMENT:  
+	    SELECT id, email, password_hash, created_at, updated_at
+	    FROM users
+	    WHERE email = $1
+	    LIMIT 1
+	  
+2026-04-02 16:05:24.314 WAT [32605] ERROR:  relation "users" does not exist at character 71
+2026-04-02 16:05:24.314 WAT [32605] STATEMENT:  
+	    SELECT id, email, password_hash, created_at, updated_at
+	    FROM users
+	    WHERE email = $1
+	    LIMIT 1
+	  
+2026-04-02 16:05:24.351 WAT [32607] ERROR:  relation "users" does not exist at character 71
+2026-04-02 16:05:24.351 WAT [32607] STATEMENT:  
+	    SELECT id, email, password_hash, created_at, updated_at
+	    FROM users
+	    WHERE email = $1
+	    LIMIT 1
+	  
+2026-04-02 16:05:24.381 WAT [32610] ERROR:  relation "users" does not exist at character 71
+2026-04-02 16:05:24.381 WAT [32610] STATEMENT:  
+	    SELECT id, email, password_hash, created_at, updated_at
+	    FROM users
+	    WHERE email = $1
+	    LIMIT 1
+	  
+2026-04-02 16:05:24.408 WAT [32612] ERROR:  relation "users" does not exist at character 71
+2026-04-02 16:05:24.408 WAT [32612] STATEMENT:  
+	    SELECT id, email, password_hash, created_at, updated_at
+	    FROM users
+	    WHERE email = $1
+	    LIMIT 1
+	  
+2026-04-02 16:07:57.045 WAT [45169] ERROR:  relation "users" does not exist at character 71
+2026-04-02 16:07:57.045 WAT [45169] STATEMENT:  
+	    SELECT id, email, password_hash, created_at, updated_at
+	    FROM users
+	    WHERE email = $1
+	    LIMIT 1
+	  
+2026-04-02 16:07:57.259 WAT [45186] ERROR:  relation "users" does not exist at character 71
+2026-04-02 16:07:57.259 WAT [45186] STATEMENT:  
+	    SELECT id, email, password_hash, created_at, updated_at
+	    FROM users
+	    WHERE email = $1
+	    LIMIT 1
+	  
+2026-04-02 16:07:57.328 WAT [45190] ERROR:  relation "users" does not exist at character 71
+2026-04-02 16:07:57.328 WAT [45190] STATEMENT:  
+	    SELECT id, email, password_hash, created_at, updated_at
+	    FROM users
+	    WHERE email = $1
+	    LIMIT 1
+	  
+2026-04-02 16:07:57.451 WAT [45199] ERROR:  relation "users" does not exist at character 71
+2026-04-02 16:07:57.451 WAT [45199] STATEMENT:  
+	    SELECT id, email, password_hash, created_at, updated_at
+	    FROM users
+	    WHERE email = $1
+	    LIMIT 1
+	  
+2026-04-02 16:07:57.476 WAT [45200] ERROR:  relation "users" does not exist at character 71
+2026-04-02 16:07:57.476 WAT [45200] STATEMENT:  
+	    SELECT id, email, password_hash, created_at, updated_at
+	    FROM users
+	    WHERE email = $1
+	    LIMIT 1
+	  
+2026-04-02 16:07:57.496 WAT [45202] ERROR:  relation "users" does not exist at character 71
+2026-04-02 16:07:57.496 WAT [45202] STATEMENT:  
+	    SELECT id, email, password_hash, created_at, updated_at
+	    FROM users
+	    WHERE email = $1
+	    LIMIT 1
+	  
+2026-04-02 16:11:01.878 WAT [61937] ERROR:  relation "users" does not exist at character 71
+2026-04-02 16:11:01.878 WAT [61937] STATEMENT:  
+	    SELECT id, email, password_hash, created_at, updated_at
+	    FROM users
+	    WHERE email = $1
+	    LIMIT 1
+	  
+2026-04-02 16:11:02.362 WAT [61985] ERROR:  relation "users" does not exist at character 71
+2026-04-02 16:11:02.362 WAT [61985] STATEMENT:  
+	    SELECT id, email, password_hash, created_at, updated_at
+	    FROM users
+	    WHERE email = $1
+	    LIMIT 1
+	  
+2026-04-02 16:11:02.625 WAT [62005] ERROR:  relation "users" does not exist at character 71
+2026-04-02 16:11:02.625 WAT [62005] STATEMENT:  
+	    SELECT id, email, password_hash, created_at, updated_at
+	    FROM users
+	    WHERE email = $1
+	    LIMIT 1
+	  
+2026-04-02 16:11:02.708 WAT [62012] ERROR:  relation "users" does not exist at character 71
+2026-04-02 16:11:02.708 WAT [62012] STATEMENT:  
+	    SELECT id, email, password_hash, created_at, updated_at
+	    FROM users
+	    WHERE email = $1
+	    LIMIT 1
+	  
+2026-04-02 16:11:02.743 WAT [62016] ERROR:  relation "users" does not exist at character 71
+2026-04-02 16:11:02.743 WAT [62016] STATEMENT:  
+	    SELECT id, email, password_hash, created_at, updated_at
+	    FROM users
+	    WHERE email = $1
+	    LIMIT 1
+	  
+2026-04-02 16:11:02.776 WAT [62020] ERROR:  relation "users" does not exist at character 71
+2026-04-02 16:11:02.776 WAT [62020] STATEMENT:  
+	    SELECT id, email, password_hash, created_at, updated_at
+	    FROM users
+	    WHERE email = $1
+	    LIMIT 1
+	  

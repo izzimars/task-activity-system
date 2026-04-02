@@ -1,0 +1,13 @@
+export const authQueries = {
+  findByEmail: `
+    SELECT id, email, password_hash, created_at, updated_at
+    FROM users
+    WHERE email = $1
+    LIMIT 1
+  `,
+  createUser: `
+    INSERT INTO users (email, password_hash)
+    VALUES ($1, $2)
+    RETURNING id, email, password_hash, created_at, updated_at
+  `
+};
